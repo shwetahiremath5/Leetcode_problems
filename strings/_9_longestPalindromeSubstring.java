@@ -1,0 +1,55 @@
+public class _9_longestPalindromeSubstring {
+   
+
+    public static String longestPalindrome(String s) {
+
+        String res = "";
+        int resLen = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            int l = i, r = i;
+
+            // Odd length palindrome
+            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+
+                if ((r - l + 1) > resLen) {
+                    res = s.substring(l, r + 1);
+                    resLen = r - l + 1;
+                }
+
+                l--;
+                r++;
+            }
+
+            // Even length palindrome
+            l = i;
+            r = i + 1;
+
+            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+
+                if ((r - l + 1) > resLen) {
+                    res = s.substring(l, r + 1);
+                    resLen = r - l + 1;
+                }
+
+                l--;
+                r++;
+            }
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+
+       // Longest_Palindromic_Substring obj =
+              //  new Longest_Palindromic_Substring();
+
+        String s = "babad";
+
+        System.out.println("Longest Palindrome: "
+                + longestPalindrome(s));
+    }
+}
+
